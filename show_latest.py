@@ -9,6 +9,13 @@ from PIL import Image
 # Definte your directory
 # My default is ./samples/
 dir = './samples/'
+# Get Latest File?
+get_latest = True
+
+if get_latest == True:
+    x = -1
+else:
+    x = -2
 
 window = Tk()
 
@@ -26,7 +33,7 @@ def show_image():
     list_of_folders = glob.glob(dir+'*') # * means all if need specific format then *.csv
     latest_folder = max(list_of_folders, key=os.path.getctime)
     list_of_files = glob.glob('./'+latest_folder+'/*.png') # * means all if need specific format then *.csv
-    latest_file = max(list_of_files, key=os.path.getctime)
+    latest_file = sorted(list_of_files, key=os.path.getctime)[x]
     sample = latest_file
     try:
         im = Image.open(sample)
@@ -68,7 +75,7 @@ def refresh_image():
     list_of_folders = glob.glob(dir+'*') # * means all if need specific format then *.csv
     latest_folder = max(list_of_folders, key=os.path.getctime)
     list_of_files = glob.glob('./'+latest_folder+'/*.png') # * means all if need specific format then *.csv
-    latest_file = max(list_of_files, key=os.path.getctime)
+    latest_file = sorted(list_of_files, key=os.path.getctime)[x]
     sample = latest_file
     try:
         im = Image.open(sample)
