@@ -4,6 +4,7 @@ Show Latest Image in Latest Directory
 A Python Script to show the latest .png file created in the latest sub-directory created.
 
 # Usage
+Place in the folder which contains subfolders and .png files that will be spontaneously created.
 ```
 python show_latest.py
 ```
